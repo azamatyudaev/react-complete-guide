@@ -1,14 +1,15 @@
 import './ExpensesItem.css'
+import { useState } from 'react'
 import ExpensesDate from './ExpensesDate/ExpensesDate'
 import Card from '../../UI/Card'
 
+
 const ExpensesItem = (props) => {
-  let title = props.title
+  const [title, setTitle] = useState(props.title)
 
   const handleClick = () => {
-    console.log('Clicked!')
-    title = 'Updated!'
-    console.log(title)
+    setTitle('Updated!')
+    console.log(title) // it shows old value because useState update function does not change actual value
   }
 
   return (
