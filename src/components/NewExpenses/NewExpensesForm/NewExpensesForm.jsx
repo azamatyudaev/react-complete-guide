@@ -2,10 +2,6 @@ import './NewExpensesForm.css'
 import { useState } from 'react'
 
 const NewExpensesForm = () => {
-  // const [enteredTitle, setEnteredTitle] = useState('')
-  // const [enteredAmount, setEnteredAmount] = useState('')
-  // const [enteredDate, setEnteredDate] = useState('')
-
   const [userInput, setUserInput] = useState({
     enteredTitle: '',
     enteredAmount: '',
@@ -13,13 +9,6 @@ const NewExpensesForm = () => {
   })
 
   const titleChangeHandler = (event) => {
-    // setEnteredTitle(event.target.value)
-
-    // setUserInput({
-    //   ...userInput,
-    //   enteredTitle: event.target.value
-    // })
-
     setUserInput((prevState) => {
       return {
         ...prevState,
@@ -29,13 +18,6 @@ const NewExpensesForm = () => {
   }
 
   const amountChangeHandler = (event) => {
-    // setEnteredAmount(event.target.value)
-
-    // setUserInput({
-    //   ...userInput,
-    //   enteredAmount: event.target.value
-    // })
-
     setUserInput((prevState) => {
       return {
         ...prevState,
@@ -45,13 +27,6 @@ const NewExpensesForm = () => {
   }
 
   const dateChangeHandler = (event) => {
-    // setEnteredDate(event.target.value)
-
-    // setUserInput({
-    //   ...userInput,
-    //   enteredDate: event.target.value
-    // })
-
     setUserInput((prevState) => {
       return {
         ...prevState,
@@ -60,13 +35,20 @@ const NewExpensesForm = () => {
     })
   }
 
-  const handleSubmit = (event) => {
+  const submitHandler = (event) => {
     event.preventDefault()
-    console.log(userInput)
+
+    const expensesData = {
+      title: userInput.enteredTitle,
+      amount: userInput.enteredAmount,
+      date: new Date(userInput.enteredDate)
+    }
+
+    console.log(expensesData)
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label htmlFor="title">Title</label>
