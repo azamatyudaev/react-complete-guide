@@ -8,8 +8,6 @@ const NewExpenses = ({ onAddExpenses }) => {
       id: Math.random().toString()
     }
 
-    console.log('New Expenses', expensesData)
-
     onAddExpenses(expensesData)
   }
 

@@ -44,8 +44,6 @@ const NewExpensesForm = ({ onSaveExpensesData }) => {
       date: new Date(userInput.enteredDate)
     }
 
-    console.log('New Expenses Form', expensesData)
-
     onSaveExpensesData(expensesData)
 
     setUserInput({

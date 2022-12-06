@@ -8,10 +8,12 @@ const Expenses = ({ expenses }) => {
   const [filteredYear, setFilteredYear] = useState('2019')
 
   const filterChangeHandler = (selectedYear) => {
-    console.log('Expenses.jsx')
-    console.log(selectedYear)
     setFilteredYear(selectedYear)
   }
+
+  const filteredExpenses = expenses.filter(expense => {
+    return expense.date.getFullYear().toString() === filteredYear
+  })
 
   return (
     <>
@@ -21,7 +23,7 @@ const Expenses = ({ expenses }) => {
           selected={filteredYear}
         />
 
-        {expenses.map((expense) => (
+        {filteredExpenses.map((expense) => (
           <ExpensesItem
             key={expense.id}
             title={expense.title}
