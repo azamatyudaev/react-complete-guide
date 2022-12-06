@@ -23,6 +23,7 @@ const Expenses = ({ expenses }) => {
 
         {expenses.map((expense) => (
           <ExpensesItem
+            key={expense.id}
             title={expense.title}
             amount={expense.amount}
             date={expense.date}
