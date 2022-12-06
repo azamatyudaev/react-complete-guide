@@ -5,15 +5,28 @@ import ExpensesFilter from '../ExpensesFilter'
 import { useState } from 'react'
 
 const Expenses = ({ expenses }) => {
-  const [filteredYear, setFilteredYear] = useState('2019')
+  const [filteredYear, setFilteredYear] = useState('2021')
 
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear)
   }
 
-  const filteredExpenses = expenses.filter(expense => {
+  const filteredExpenses = expenses.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear
   })
+
+  let expensesContent = <p>No expenses found!</p>
+
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpensesItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ))
+  }
 
   return (
     <>
@@ -23,14 +36,31 @@ const Expenses = ({ expenses }) => {
           selected={filteredYear}
         />
 
-        {filteredExpenses.map((expense) => (
-          <ExpensesItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        {/*{filteredExpenses.length === 0 ? (*/}
+        {/*  <p>No expenses found!</p>*/}
+        {/*) : (*/}
+        {/*  filteredExpenses.map((expense) => (*/}
+        {/*    <ExpensesItem*/}
+        {/*      key={expense.id}*/}
+        {/*      title={expense.title}*/}
+        {/*      amount={expense.amount}*/}
+        {/*      date={expense.date}*/}
+        {/*    />*/}
+        {/*  ))*/}
+        {/*)}*/}
+
+        {/*{filteredExpenses.length === 0 && <p>No expenses found!</p>}*/}
+        {/*{filteredExpenses.length > 0 &&*/}
+        {/*  filteredExpenses.map((expense) => (*/}
+        {/*    <ExpensesItem*/}
+        {/*      key={expense.id}*/}
+        {/*      title={expense.title}*/}
+        {/*      amount={expense.amount}*/}
+        {/*      date={expense.date}*/}
+        {/*    />*/}
+        {/*  ))}*/}
+
+        {expensesContent}
       </Card>
     </>
   )
