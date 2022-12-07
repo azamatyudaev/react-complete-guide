@@ -1,5 +1,5 @@
 import './NewExpenses.css'
-import NewExpensesForm from './NewExpensesForm/NewExpensesForm'
+import NewExpensesForm from '../NewExpensesForm/NewExpensesForm'
 
 const NewExpenses = ({ onAddExpenses }) => {
   const saveExpensesDataHandler = (enteredExpensesData) => {
