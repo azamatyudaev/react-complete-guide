@@ -1,5 +1,5 @@
 import './Chart.css'
-import ChartBar from './ChartBar/ChartBar'
+import ChartBar from '../ChartBar/ChartBar'
 
 const Chart = ({ charts }) => {
   return (
